@@ -29,8 +29,12 @@ class Interpreter{
         }
     }
 
-    fun tokenize(line:String): List<String> {
-        return line.replace("("," ( ").replace(")"," ) ").splitBy(" ").filter { s -> s.isNotEmpty() }
+    fun tokenize(line:String): List<Token> {
+        return line.replace("("," ( ")
+                .replace(")"," ) ")
+                .splitBy(" ")
+                .filter { s -> s.isNotEmpty() }
+                .map { s -> strToToken(s) }
     }
 
 
